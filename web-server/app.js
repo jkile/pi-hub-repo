@@ -4,7 +4,7 @@ const express = require('express')
 const app = express()
 
 
-const publicDirectoryPath = path.join(__dirname, '../public')
+const publicDirectoryPath = path.join(__dirname, '../')
 
 
 app.use(express.static(publicDirectoryPath))
