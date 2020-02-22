@@ -1,8 +1,11 @@
 const path = require('path')
 const express = require('express')
-const basicAuth = require('express-basic-auth')
+const basicAuth = require('basic-Auth')
+const bodyParser = require('body-parser')
+
 
 const app = express()
+app.use(bodyParser.urlencoded({extended:true}))
 
 
 const publicDirectoryPath = path.join(__dirname, '../')
@@ -11,13 +14,17 @@ const publicDirectoryPath = path.join(__dirname, '../')
 
 app.use(express.static(publicDirectoryPath))
 
-app.use(basicAuth({
-    users: {
-        'admin': 'password',
-        'spencer': 'spencer',
-        'jake': 'jake',
-    }
-}))
+app.use(basicAuth)
+
+app.get('', (req, res) => {
+    res.send('index')
+})
+
+app.post('/home', (req, res) => {
+    console.log(req.body)
+    res.sendFile(path.join(__dirname, '../home.html'))
+})
+
 
 
 
