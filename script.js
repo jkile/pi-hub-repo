@@ -1,11 +1,12 @@
 let userName;
 let password;
-
+let user = {userName, password}
 document.getElementById("signIn").addEventListener("click", function(){
-    userName = document.getElementById("userName").value;
+    user.userName = document.getElementById("userName").value;
     document.getElementById("userName").value = "";
-    password = document.getElementById("password").value;
+    user.password = document.getElementById("password").value;
     document.getElementById("password").value = "";
+
 })
 
 
