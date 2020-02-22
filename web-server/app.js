@@ -14,8 +14,6 @@ const publicDirectoryPath = path.join(__dirname, '../')
 
 app.use(express.static(publicDirectoryPath))
 
-app.use(basicAuth)
-
 app.get('', (req, res) => {
     res.send('index')
 })
