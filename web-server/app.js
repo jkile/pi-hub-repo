@@ -1,14 +1,23 @@
 const path = require('path')
 const express = require('express')
+const basicAuth = require('express-basic-auth')
 
 const app = express()
 
 
 const publicDirectoryPath = path.join(__dirname, '../')
 
+// todo - enable home.html
 
 app.use(express.static(publicDirectoryPath))
 
+app.use(basicAuth({
+    users: {
+        'admin': 'password',
+        'spencer': 'spencer',
+        'jake': 'jake',
+    }
+}))
 
 
 
