@@ -10,9 +10,6 @@ const publicDirectoryPath = path.join(__dirname, '../')
 app.use(express.static(publicDirectoryPath))
 
 
-// app.get('/index', (req, res) => {
-    
-// })
 
 
 app.listen(3000, () => {
