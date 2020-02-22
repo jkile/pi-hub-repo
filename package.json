@@ -23,6 +23,7 @@
     "express-basic-auth": "^1.2.0",
     "nodemon": "^2.0.2",
     "request": "^2.88.2",
-    "tailwindcss": "^1.2.0"
+    "tailwindcss": "^1.2.0",
+    "tsscmp": "^1.0.6"
   }
 }
