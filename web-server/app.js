@@ -1,8 +1,8 @@
 const path = require('path')
 const express = require('express')
 const bodyParser = require('body-parser')
-const User = require('./models/user')
-require('./db/mongoose')
+const User = require('../src/models/user')
+require('../src/db/mongoose')
 
 
 const app = express()
