@@ -9,11 +9,14 @@ mongoose.connect('mongodb://127.0.0.1:27017/underwater-squad-api', {
 const User = mongoose.model('User', {
     name: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     email: {
         type: String,
         required: true,
+        trim: true,
+        lowercase: true,
         validate(value){
             if (!validator.isEmail(value)) {
                 throw new Error('Email is invalid')
@@ -22,6 +25,7 @@ const User = mongoose.model('User', {
     },
     age: {
         type: Number,
+        default: 0,
         validate(value) {
             if (value < 0) {
                 throw new Error('Age must be above 0')
@@ -32,7 +36,7 @@ const User = mongoose.model('User', {
 
 const user1 = new User({
     name: 'Spencer',
-    email: 'spencer@'
+    email: 'spencer@Birch.com'
 })
 
 user1.save().then(() => {
@@ -44,21 +48,23 @@ user1.save().then(() => {
 
 const Task = mongoose.model('Task', {
     description: {
-        type: String
+        type: String,
+        required: true,
+        trim: true
     }, 
     completed: {
-        type: Boolean
+        type: Boolean,
+        default: false
     }
 })
 
-// const task = new Task({
-//     description: 'Upload new files',
-//     completed: false
-// })
+const task = new Task({
+    description: 'Upload new files',
+})
 
 
-// task.save().then(() => {
-//     console.log(task)
-// }).catch((error) => {
-//     console.log(error)
-// })
+task.save().then(() => {
+    console.log(task)
+}).catch((error) => {
+    console.log(error)
+})
