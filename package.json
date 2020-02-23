@@ -4,7 +4,9 @@
   "description": "pi hub repo for github clone on raspberry pi. Made by Jake Kile and Spencer Birch",
   "main": "script.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "squad": "nodemon web-server/app.js"
   },
   "repository": {
     "type": "git",
