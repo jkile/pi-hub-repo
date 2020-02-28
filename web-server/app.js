@@ -2,7 +2,7 @@ const path = require('path')
 const express = require('express')
 const bodyParser = require('body-parser')
 const User = require('../src/models/user')
-require('../src/db/mongoose')
+require('./mongoose')
 const Task = require('../src/models/task')
 
 
@@ -63,6 +63,8 @@ app.get('/users/:id', (req, res) => {
     })
     console.log(req.params)
 })
+
+
 
 // Creates new task, requires description. will accept 'completed' bool.
 // default is false
