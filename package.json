@@ -4,7 +4,9 @@
   "description": "pi hub repo for github clone on raspberry pi. Made by Jake Kile and Spencer Birch",
   "main": "script.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "squad": "nodemon web-server/app.js"
   },
   "repository": {
     "type": "git",
@@ -17,13 +19,21 @@
   },
   "homepage": "https://github.com/jkile/pi-hub-repo#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.4",
     "express": "^4.17.1",
     "express-basic-auth": "^1.2.0",
-    "nodemon": "^2.0.2",
+    "express-validator": "^6.4.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.5.3",
+    "mongoose": "^5.9.2",
     "request": "^2.88.2",
     "tailwindcss": "^1.2.0",
-    "tsscmp": "^1.0.6"
+    "tsscmp": "^1.0.6",
+    "validator": "^12.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
   }
 }
