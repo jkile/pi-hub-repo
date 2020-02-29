@@ -22,6 +22,7 @@ app.post('/home', (req, res) => {
     res.sendFile(path.join(__dirname, '../home.html'))
 })
 
+
 // Creates new user - JSON POST: name, email, password
 // localhost:3000/users
 app.post('/users', async (req, res) => {
@@ -47,6 +48,8 @@ app.get('/users', async (req, res) => {
 // fetch individual user by DB-ID
 // GET localhost:3000/users/{id}
 app.get('/users/:id', async (req, res) => {
+    const _id = req.params.id
+
     try {
         const user = await User.findById(__id)
         
@@ -57,6 +60,20 @@ app.get('/users/:id', async (req, res) => {
 
     } catch (e) {
         res.status(500).send()
+    }
+})
+
+
+// this updates users files
+app.patch('/users/:id', async (req, res) => {
+    try {
+        const user = await User.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true })
+        if (!user) {
+            return res.status(404).send()
+        }
+        res.send(user)
+    } catch (e) {
+        res.status(400).send(e)
     }
 })
 
