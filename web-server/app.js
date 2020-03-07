@@ -4,13 +4,27 @@ const bodyParser = require('body-parser')
 require('./mongoose')
 const userRouter = require('../src/routers/user')
 const taskRouter = require('../src/routers/task')
+const publicDirectoryPath = path.join(__dirname, '../')
 
 
 const app = express()
 const port = process.env.PORT || 3000
+
+// app.use((req, res, next) => {
+//     if (req.method ==='GET') {
+//         res.send('GET requests disabled.')
+//     } else {
+//         next()
+//     }
+// })
+
+// app.use((req, res, next) => {
+//     res.status(503).send('Site Under Construction')
+// })
+
+
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(express.json())
-const publicDirectoryPath = path.join(__dirname, '../')
 app.use(express.static(publicDirectoryPath))
 app.use(userRouter)
 app.use(taskRouter)
@@ -35,10 +49,10 @@ const jwt = require('jsonwebtoken')
 
 
 const myFunction = async () => {
-    const token = jwt.sign({ _id: 'abc123' }, 'signingthecode', { expiresIn: '7 days'})
+    const token = jwt.sign({ _id: 'abc123' }, 'secretkeeper', { expiresIn: '24 hours'})
     console.log(token)
 
-    const data = jwt.verify(token, 'signingthecode')
+    const data = jwt.verify(token, 'secretkeeper')
     console.log(data)
 } 
 myFunction()
