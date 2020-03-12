@@ -26,8 +26,28 @@ app.post('/home', (req, res) => {
     res.sendFile(path.join(__dirname, '../home.html'))
 })
 
-app.listen(port, () => {
-    console.log(chalk.white.italic.bgBlue('Underwater-Server is now running on port ' + port))
-})
+
+var i = 3;
+
+function portCall() {
+
+    var countdownTimer = setInterval(function() {
+
+        console.log(i);
+        i = i - 1;
+
+        if (i <= 0) {
+            clearInterval(countdownTimer);
+            app.listen(port, () => {
+                console.log(chalk.white.italic.bgBlue('Underwater-Server is now running on port ' + port))
+            })
+        }
+
+    }, 1000);
+
+}
+
+portCall(); 
+
 
 
