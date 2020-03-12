@@ -1,3 +1,5 @@
+// This file controls password hashing and user authentication. 
+
 const jwt = require('jsonwebtoken')
 const User = require('../models/user')
 

@@ -3,65 +3,68 @@ const User = require('../models/user')
 const auth = require('../middleware/auth')
 const router = new express.Router()
 
-// Creates new user - JSON POST: name, email, password
-// localhost:3000/users
+// Create new user
 router.post('/users', async (req, res) => {
     const user = new User(req.body)
+
     try {
         await user.save()
         const token = await user.generateAuthToken()
-        res.status(201).send({ user, token})
+        res.status(201).send({ user, token })
+
     } catch (e) {
         res.status(400).send(e)
     }
 })
 
-
-
-// User LOGIN
+// User login
 router.post('/users/login', async (req, res) => {
     try {
         const user = await User.findByCredentials(req.body.email, req.body.password)
         const token = await user.generateAuthToken()
-        res.send({ user, token })
+        res.send({ user: user, token })
+   
     } catch (e) {
         res.status(400).send()
     }
 })
 
-// user logout this device
+// user logout - single device
 router.post('/users/logout', auth, async (req, res) => {
     try {
         req.user.tokens = req.user.tokens.filter((token) => {
             return token.token !== req.token
         })
-        await req.user.save()
 
+        await req.user.save()
         res.send()
+        
     } catch (e) {
         res.status(500).send()
     }
 })
 
-// user logout of all sessions
+// user logout - all sessions
 router.post('/users/logoutAll', auth, async (req, res) => {
     try {
         req.user.tokens = []
         await req.user.save()
         res.send()
+   
     } catch (e) {
         res.status(500).send()
     }
 })
 
-
-// GET request to /users. calls all users
+// GET request to /users. calls all users. 
+// Not sure why you would want to do this...but you can
 router.get('/users/me', auth, async (req, res) => {
    res.send(req.user)
 })
 
 // fetch individual user by DB-ID
 // GET localhost:3000/users/{id}
+// Obviously you need to know the users ID first
 router.get('/users/:id', async (req, res) => {
     const _id = req.params.id
 
@@ -78,7 +81,7 @@ router.get('/users/:id', async (req, res) => {
     }
 })
 
-// this updates users files
+// this updates a user's info
 router.patch('/users/:id', async (req, res) => {
     const updates = Object.keys(req.body)
     const allowedUpdates = ['name', 'email', 'password', 'age']
@@ -95,7 +98,6 @@ router.patch('/users/:id', async (req, res) => {
 
         await user.save()
 
-        // const user = await User.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true })
         if (!user) {
             return res.status(404).send()
         }
@@ -105,7 +107,7 @@ router.patch('/users/:id', async (req, res) => {
     }
 })
 
-// user delete call to their ID. No parameters needed. 
+// Delete user - Only the ID is necessary 
 router.delete('/users/:id', async (req, res) => {
     try {
         const user = await User.findByIdAndDelete(req.params.id)
@@ -113,7 +115,6 @@ router.delete('/users/:id', async (req, res) => {
         if (!user) {
             return res.status(404).send()
         }
-
         res.send(user)
     } catch (e) {
         res.status(500).send()

@@ -49,6 +49,18 @@ const userSchema = new mongoose.Schema({
     }]
 })
 
+// scrubs PII from data being sent back to user
+userSchema.methods.toJSON = function () {
+    const user = this 
+    return userObject = user.toObject()
+
+    delete userObject.password
+    delete userObject.tokens
+
+    return userObject
+}
+
+// Generates JWT for authenticating user during session
 userSchema.methods.generateAuthToken = async function () {
     const user = this
     const token = jwt.sign({ _id: user._id.toString() }, 'secretkeeper')
