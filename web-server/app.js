@@ -21,7 +21,7 @@ app.get('', (req, res) => {
     res.send('index')
 })
 
-app.post('/home', (req, res) => {
+app.get('/home', (req, res) => {
     console.log(req.body)
     res.sendFile(path.join(__dirname, '../home.html'))
 })

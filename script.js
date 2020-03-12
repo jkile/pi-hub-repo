@@ -1,11 +1,24 @@
+//import { axios } from "./node_modules/axios/index.js";
+
 let userName;
 let password;
 let user = {userName, password}
-document.getElementById("signIn").addEventListener("click", function(){
+document.getElementById("signIn").addEventListener("click", async function(event){
+    event.preventDefault();
     user.userName = document.getElementById("userName").value;
     // document.getElementById("userName").value = "";
     user.password = document.getElementById("password").value;
-    // document.getElementById("password").value = "";
+    
+    try{
+        await axios.post("/users/login", {
+            email: user.userName,
+            password: user.password
+        });
+        await axios.get("/home");
+    } catch (e){
+        console.log(e);
+    }
+    
 
 })
 
