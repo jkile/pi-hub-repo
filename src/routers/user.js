@@ -16,6 +16,8 @@ router.post('/users', async (req, res) => {
     }
 })
 
+
+
 // User LOGIN
 router.post('/users/login', async (req, res) => {
     try {
@@ -26,6 +28,32 @@ router.post('/users/login', async (req, res) => {
         res.status(400).send()
     }
 })
+
+// user logout this device
+router.post('/users/logout', auth, async (req, res) => {
+    try {
+        req.user.tokens = req.user.tokens.filter((token) => {
+            return token.token !== req.token
+        })
+        await req.user.save()
+
+        res.send()
+    } catch (e) {
+        res.status(500).send()
+    }
+})
+
+// user logout of all sessions
+router.post('/users/logoutAll', auth, async (req, res) => {
+    try {
+        req.user.tokens = []
+        await req.user.save()
+        res.send()
+    } catch (e) {
+        res.status(500).send()
+    }
+})
+
 
 // GET request to /users. calls all users
 router.get('/users/me', auth, async (req, res) => {
