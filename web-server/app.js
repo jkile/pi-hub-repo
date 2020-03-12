@@ -26,27 +26,6 @@ app.get('/home', (req, res) => {
     res.sendFile(path.join(__dirname, '../home.html'))
 })
 
-let i = 3;
-
-function portCall() {
-
-    let countdownTimer = setInterval(function() {
-
-        console.log(i);
-        i = i - 1;
-
-        if (i <= 0) {
-            clearInterval(countdownTimer);
-            app.listen(port, () => {
-                console.log(chalk.whiteBright.italic.bgBlue('Underwater-Server is now running on port ' + port))
-            })
-        }
-
-    }, 1000);
-
-}
-
-portCall(); 
-
-
-
+app.listen(port, () => {
+    console.log(chalk.whiteBright.italic.bgBlue('Underwater-Server is now running on port ' + port))
+})
