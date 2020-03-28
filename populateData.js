@@ -20,7 +20,7 @@ function renderMenu(menuItems){
         let newDoc = document.createElement("p");
         newDoc.setAttribute("class", "text-gray-1000 font-semibold text-md");
         newDoc.innerText = documentResponse.data;
-        documentDisplay.appendChild(newItem);
+        documentDisplay.appendChild(newDoc);
     })
 }
 
