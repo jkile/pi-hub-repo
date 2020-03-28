@@ -18,9 +18,11 @@ router.get('/documents', async (req, res) => {
             const fileNames = [] 
             files.forEach(file => {
                 fileNames.push(file)
+                
             })
             res.send(fileNames)
         })
+
     } catch (e) {
         res.status(400).send()
         return console.log('error getting file names')
