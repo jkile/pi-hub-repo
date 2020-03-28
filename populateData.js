@@ -4,7 +4,7 @@ const documentDisplay = document.getElementById("documentDisplay");
 
 async function onLoad(){
     const documentsResponse = await axios.get("/documents");
-    renderMenu(documentsResponse);
+    renderMenu(documentsResponse.data);
 }
 
 function renderMenu(menuItems){
