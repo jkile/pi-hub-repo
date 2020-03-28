@@ -13,7 +13,7 @@ const router = new express.Router()
 
 router.get('/documents', async (req, res) => {
     try {
-        fs.readdir('../../documents', (err, files) => {
+        fs.readdir('./documents', (err, files) => {
             if (err) throw err
             const fileNames = [] 
             files.forEach(file => {
@@ -22,7 +22,7 @@ router.get('/documents', async (req, res) => {
             })
             res.send(fileNames)
         })
-        
+
     } catch (e) {
         res.status(400).send()
         return console.log('error getting file names')
