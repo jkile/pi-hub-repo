@@ -23,8 +23,11 @@ router.post('/users/login', async (req, res) => {
         const user = await User.findByCredentials(req.body.email, req.body.password)
         const token = await user.generateAuthToken()
         res.send({ user: user, token })
+        return console.log('Login Successful')
+   
     } catch (e) {
         res.status(400).send()
+        return console.log('Login Failed')
     }
 })
 
@@ -55,8 +58,7 @@ router.post('/users/logoutAll', auth, async (req, res) => {
     }
 })
 
-// GET request to /users. calls all users. 
-// Not sure why you would want to do this...but you can
+// gets user profile info
 router.get('/users/me', auth, async (req, res) => {
    res.send(req.user)
 })
