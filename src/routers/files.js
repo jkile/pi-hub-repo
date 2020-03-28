@@ -6,11 +6,6 @@ const fs = require('fs')
 const router = new express.Router()
 
 
-
-
-
-
-
 router.get('/documents', async (req, res) => {
     try {
         fs.readdir('./documents', (err, files) => {

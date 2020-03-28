@@ -3,8 +3,8 @@ const menu = document.getElementById("menu");
 const documentDisplay = document.getElementById("documentDisplay");
 
 async function onLoad(){
-    const documentsResponse = await axios.get("/documents");
-    renderMenu(documentsResponse.data);
+    const documentListResponse = await axios.get("/documents");
+    renderMenu(documentListResponse.data);
 }
 
 function renderMenu(menuItems){
@@ -14,8 +14,13 @@ function renderMenu(menuItems){
         newItem.innerText = item;
         menu.appendChild(newItem);
     })
-    menu.addEventListener("click", e => {
+    menu.addEventListener("click", async e => {
         console.log(e.target.innerText);
+        const documentResponse = await axios.get("/documents/" + e.target.innerText);
+        let newDoc = document.createElement("p");
+        newDoc.setAttribute("class", "text-gray-1000 font-semibold text-md");
+        newDoc.innerText = documentResponse.data;
+        documentDisplay.appendChild(newItem);
     })
 }
 
