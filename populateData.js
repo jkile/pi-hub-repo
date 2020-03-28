@@ -4,12 +4,7 @@ const documentDisplay = document.getElementById("documentDisplay");
 
 async function onLoad(){
     const documentsResponse = await axios.get("/documents");
-    const menuArray = [];
-    documentsResponse.forEach(item => {
-        menuArray.push(item.fileName);
-
-    });
-    renderMenu(menuArray);
+    renderMenu(documentsResponse);
 }
 
 function renderMenu(menuItems){
