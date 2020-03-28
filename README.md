@@ -1,4 +1,4 @@
-# pi-hub-repo
+# pi-hub deployment server
 
 A fullstack deployment server project by the Underwater-Squad. 
 
