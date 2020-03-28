@@ -29,4 +29,19 @@ router.get('/documents', async (req, res) => {
     }
 })
 
+
+router.get('/documents/:fileName', async (req, res) => {
+    try {
+        fs.readFile('/documents' + fileName, (err, fileContent) => {
+            if (err) throw err
+            res.send(fileContent)
+        })
+    } catch (e) {
+        res.status(400).send()
+        return console.log('router.get error')
+    }
+})
+
+
+
 module.exports = router
