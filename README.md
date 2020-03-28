@@ -1,6 +1,6 @@
 # pi-hub-repo
 
-A truly fullstack web development project by the Underwater-Squad. 
+A fullstack locally hosted deployment server project by the Underwater-Squad. 
 
 The goal of this project is to create a custom github clone hosted locally on private hardware.
 
