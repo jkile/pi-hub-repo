@@ -41,7 +41,7 @@ router.get('/tasks/:id', async (req, res) => {
     }
 })
 
-
+// Updates task
 router.patch('/tasks/:id', async (req, res) => {
     const updates = Object.keys(req.body)
     const allowedUpdates = ['description', 'completed']
@@ -67,6 +67,7 @@ router.patch('/tasks/:id', async (req, res) => {
     }
 })
 
+// Delete task
 router.delete('/tasks/:id', async (req, res) => {
     try {
         const task = await Task.findByIdAndDelete(req.params.id)
