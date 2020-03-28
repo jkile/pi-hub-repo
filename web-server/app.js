@@ -5,6 +5,7 @@ const bodyParser = require('body-parser')
 require('./mongoose')
 const userRouter = require('../src/routers/user')
 const taskRouter = require('../src/routers/task')
+const filesRouter = require('../src/routers/files')
 const publicDirectoryPath = path.join(__dirname, '../')
 
 const app = express()
@@ -15,7 +16,7 @@ app.use(express.json())
 app.use(express.static(publicDirectoryPath))
 app.use(userRouter)
 app.use(taskRouter)
-
+app.use(filesRouter)
 
 app.get('', (req, res) => {
     res.send('index')
