@@ -4,10 +4,12 @@ const documentDisplay = document.getElementById("documentDisplay");
 
 async function onLoad() {
     const documentListResponse = await axios.get("/documents");
-    renderMenu(documentListResponse.data.children);
+    const files = await axios.get("/documents/db");
+    console.log(files.data);
+    renderMenu(documentListResponse.data.children, files);
 }
 
-function renderMenu(menuItems) {
+async function renderMenu(menuItems) {
 
     const repoList = document.createElement("ul");
     repoList.setAttribute("id", "repoList");
