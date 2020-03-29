@@ -66,3 +66,11 @@ li:hover{
     color: gray;
     border-top: 1px solid gray;
 }
+
+.h-92{
+    height: 92.75vh;
+}
+
+.h-88{
+    height: 88vh;
+}
