@@ -7,8 +7,6 @@ const dirTree = require('directory-tree')
 
 const router = new express.Router()
 
-// console.log(tree)
-
 
 router.get('/documents', async (req, res) => {
     try {
