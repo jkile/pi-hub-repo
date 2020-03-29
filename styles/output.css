@@ -14033,6 +14033,14 @@ ul, #repoList{
   display: block;
 }
 
+li, ul{
+  transition: 0.5s;
+}
+
+li:hover, ul:hover{
+  color: gray;
+}
+
 @media (min-width: 640px) {
   .sm\:sr-only {
     position: absolute;
