@@ -46,3 +46,11 @@ ul, #repoList{
 .active {
     display: block;
 }
+
+li, ul{
+    transition: 0.5s;
+}
+
+li:hover, ul:hover{
+    color: gray;
+}
