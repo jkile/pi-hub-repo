@@ -31,16 +31,21 @@ router.get("/documents/db", (req, res) => {
         })
 })
 
-router.get(':filePath', async (req, res) => {
-    try {
-        fs.readFile(filePath, (err, fileContent) => {
-            if (err) throw err
-            res.send(fileContent)
+router.get('/documents/:id', async (req, res) => {
+
+    db.File.find({_id: req.params.id})
+        .then(file => {
+            try {
+                fs.readFile(file[0].filePath, (err, fileContent) => {
+                    if (err) throw err
+                    res.send(fileContent)
+                })
+            } catch (e) {
+                res.status(400).send()
+                return console.log('router.get error')
+            }
         })
-    } catch (e) {
-        res.status(400).send()
-        return console.log('router.get error')
-    }
+
 })
 
 
