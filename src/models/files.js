@@ -7,7 +7,7 @@ const fileSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
-    fileContent: {
+    filePath: {
         type: String,
         required: true,
     },
@@ -16,6 +16,7 @@ const fileSchema = new mongoose.Schema({
         required: true,
         default: Date.now
     }
+
 
 })
 
