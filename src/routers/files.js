@@ -1,24 +1,16 @@
 const express = require('express')
 const User = require('../models/user')
 const auth = require('../middleware/auth')
-const files = require('../models/files')
 const fs = require('fs')
 const dirTree = require('directory-tree')
+const db = require("../models");
 
 const router = new express.Router()
 
 
 router.get('/documents', async (req, res) => {
     try {
-        // fs.readdir('./documents', (err, files) => {
-        //     if (err) throw err
-        //     const fileNames = [] 
-        //     files.forEach(file => {
-        //         fileNames.push(file)
-                
-        //     })
-        //     res.send(fileNames)
-        // })
+
         const tree = dirTree('./documents')
 
         res.send(tree)
@@ -29,6 +21,15 @@ router.get('/documents', async (req, res) => {
     }
 })
 
+router.get("/documents/db", (req, res) => {
+    db.File.find({})
+        .then(files =>{
+            res.json(files);
+        })
+        .catch(err => {
+            res.status(400).json(err);
+        })
+})
 
 router.get(':filePath', async (req, res) => {
     try {
