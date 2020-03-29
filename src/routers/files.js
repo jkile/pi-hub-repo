@@ -4,7 +4,7 @@ const auth = require('../middleware/auth')
 const files = require('../models/files')
 const fs = require('fs')
 const dirTree = require('directory-tree')
-const tree = dirTree('./documents')
+
 const router = new express.Router()
 
 // console.log(tree)
@@ -21,6 +21,7 @@ router.get('/documents', async (req, res) => {
         //     })
         //     res.send(fileNames)
         // })
+        const tree = dirTree('./documents')
 
         res.send(tree)
 
