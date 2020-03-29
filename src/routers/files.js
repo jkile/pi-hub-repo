@@ -32,9 +32,9 @@ router.get('/documents', async (req, res) => {
 })
 
 
-router.get('/documents/:fileName', async (req, res) => {
+router.get(':filePath', async (req, res) => {
     try {
-        fs.readFile('/documents' + fileName, (err, fileContent) => {
+        fs.readFile(filePath, (err, fileContent) => {
             if (err) throw err
             res.send(fileContent)
         })
