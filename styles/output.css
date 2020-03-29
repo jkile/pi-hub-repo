@@ -14002,6 +14002,37 @@ body{
   background-color: #0A1826;
 }
 
+ul, #repoList{
+  list-style-type: none;
+}
+
+.caret{
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.caret::before {
+  content: "\25B6";
+  color: white;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.caret-down::before {
+  transform: rotate(90deg);
+}
+
+.nested {
+  display: none;
+}
+
+.active {
+  display: block;
+}
+
 @media (min-width: 640px) {
   .sm\:sr-only {
     position: absolute;
