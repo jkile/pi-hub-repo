@@ -5,7 +5,7 @@ const documentDisplay = document.getElementById("documentDisplay");
 async function onLoad() {
     const documentListResponse = await axios.get("/documents");
     const files = await axios.get("/documents/db");
-    renderMenu(documentListResponse.data, files);
+    renderMenu(documentListResponse.data, files.data);
 }
 
 async function renderMenu(menuItems, files) {
@@ -16,7 +16,7 @@ async function renderMenu(menuItems, files) {
     menu.appendChild(repoList);
 
     //calls recursive render function with doc tree, mongo response, and list as args
-    render(menuItems, files.data, repoList);
+    render(menuItems, files, repoList);
 
     let toggler = document.getElementsByClassName("caret");
 
@@ -28,7 +28,11 @@ async function renderMenu(menuItems, files) {
     }
 
     menu.addEventListener("click", async e => {
-        if (e.target.tagName === "LI") {
+        if (e.target.id && e.target.tagName === "LI") {
+            document.querySelectorAll(".selected").forEach(item=>{
+                item.removeAttribute("class")
+            })
+            e.target.setAttribute("class", "selected");
             const documentResponse = await axios.get("/documents/" + e.target.id);
             let newDoc = document.createElement("p");
             newDoc.setAttribute("class", "text-gray-1000 font-semibold text-md");
@@ -46,7 +50,7 @@ function render(menuItems, files, list) {
         menuItems.children.forEach(item => {
 
             let newItem = document.createElement("li");
-            newItem.setAttribute("class", "text-white font-semibold text-md ml-3");
+            newItem.setAttribute("class", "text-white font-semibold text-md");
             newItem.innerText = item.name;
             list.appendChild(newItem);
 
