@@ -47,10 +47,30 @@ ul, #repoList{
     display: block;
 }
 
-li, ul{
+li{
+    margin-left: 1rem;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    border-top: 1px solid #0A1826;
     transition: 0.5s;
 }
 
-li:hover, ul:hover{
+li:hover{
     color: gray;
+    border-top: 1px solid gray;
+}
+.selected{
+    margin-left: 1rem;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    color: gray;
+    border-top: 1px solid gray;
+}
+
+.h-92{
+    height: 92.75vh;
+}
+
+.h-88{
+    height: 88vh;
 }
