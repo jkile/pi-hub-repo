@@ -6,6 +6,7 @@ require('./mongoose')
 const userRouter = require('../src/routers/user')
 const taskRouter = require('../src/routers/task')
 const filesRouter = require('../src/routers/files')
+const gitRouter = require('../src/routers/git')
 const publicDirectoryPath = path.join(__dirname, '../')
 
 const app = express()
@@ -17,6 +18,7 @@ app.use(express.static(publicDirectoryPath))
 app.use(userRouter)
 app.use(taskRouter)
 app.use(filesRouter)
+app.use(gitRouter)
 
 app.get('', (req, res) => {
     res.send('index')

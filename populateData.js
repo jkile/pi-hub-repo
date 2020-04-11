@@ -36,7 +36,11 @@ async function renderMenu(menuItems, files) {
             const documentResponse = await axios.get("/documents/" + e.target.id);
             let newDoc = document.createElement("p");
             newDoc.setAttribute("class", "text-gray-1000 font-semibold text-md");
-            newDoc.innerText = documentResponse.data;
+            if(typeof documentResponse.data === "object"){
+                newDoc.innerText = JSON.stringify(documentResponse.data, null, 2)
+            } else {
+                newDoc.innerText = documentResponse.data;
+            }
             documentDisplay.innerHTML = "";
             documentDisplay.appendChild(newDoc);
         } else {
