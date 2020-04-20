@@ -1,9 +1,15 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Home from "./pages/Home/Home";
+import Index from "./pages/Index/Index";
 import Nav from "./components/Nav/Nav";
-import "./reset.scss"
+import "./reset.scss";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 
 function App() {
   const [sidebarPullout, setSidebarPullout] = useState(false);
@@ -14,8 +20,17 @@ function App() {
 
   return (
     <div className="App">
-      <Nav sidebarPullout={sidebarPullout} setSidebarPullout={handleSidebarPullout}/>
-      <Home sidebarPullout={sidebarPullout} setSidebarPullout={handleSidebarPullout}/>
+      <Router>
+        <Nav sidebarPullout={sidebarPullout} setSidebarPullout={handleSidebarPullout} />
+        <Switch>
+          <Route exact path="/">
+            <Index />
+          </Route>
+          <Route path="/home">
+            <Home sidebarPullout={sidebarPullout} setSidebarPullout={handleSidebarPullout} />
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }
