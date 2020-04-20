@@ -27,7 +27,7 @@ export default function Sidebar(props) {
         <div className={`${styles.sidebar} ${props.sidebarPullout ? {} : styles.hide}`}>
             <h1 className={styles.repoHeader}>Repos: </h1>
             <ul className={styles.tree}>
-                <TreeItem name={fileTreeObject.name} children={fileTreeObject} open={true} files={files}/>
+                {files && <TreeItem name={fileTreeObject.name} children={fileTreeObject} open={true} files={files}/>}
             </ul>
 
         </div>
