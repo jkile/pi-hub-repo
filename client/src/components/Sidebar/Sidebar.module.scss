@@ -11,13 +11,11 @@
     height: calc(100vh - 6rem);
     transition: .4s;
     background-color: $secondary-color;
-
-
+    overflow: auto;
 }
 .tree{
     margin-top: 1rem;
     margin-left: .5rem;
-    overflow: auto;
 }
 
 .hide{
