@@ -9,24 +9,21 @@ const router = new express.Router();
 router.post("/api/git/init/:name", (req, res) => {
     try {
 
-        if (!fs.existsSync(`../../testRepos/${req.params.name}`)){
-            fs.mkdirSync(`../../testRepos/${req.params.name}`);
-            fs.mkdirSync(`../../testClone/${req.params.name}`);
-            const simpleGit = require('simple-git')(`../../testRepos/${req.params.name}`);
+        if (!fs.existsSync(`../../../git/${req.params.name}.git`)){
+
+            const simpleGit = require('simple-git')(`../../../git`);
 
             simpleGit.init("bare")
-                .add("./*")
-                .commit("Init")
-                .addRemote("origin", `../testRepos/${req.params.name}/.git`)
-                .push("origin", "master");
+                // .addRemote("origin", `ubuntu@192.168.7.6:/home/ubuntu/Server/git/${req.params.name}.git`)
 
-                res.send(`../testRepos/${req.params.name}/.git`);
+
+                res.send(`ubuntu@192.168.7.6:/home/ubuntu/Server/git/${req.params.name}.git`);
         } else {
             res.send("Repository name taken, please try another name")
         }
 
     } catch (e) {
-        res.send(e);
+        res.send("did not work");
     }
 })
 
