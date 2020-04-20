@@ -1,0 +1,40 @@
+@import "variables";
+
+.item{
+    margin-left: .5rem;
+    margin-top: .5rem;
+    color: white;
+    font-family: $primary-font;
+    border-top: 1px solid #0A1826;
+    font-weight: 500;
+    transition: .4s;
+}
+.caret{
+    cursor: pointer;
+    user-select: none;
+}
+
+.caret:before {
+    content: "\25B6";
+    color: white;
+    display: inline-block;
+    margin-right: 6px;
+}
+.caretDown::before {
+    transform: rotate(90deg);
+}
+.nested {
+    display: none;
+}
+.active {
+    display: block;
+}
+ul{
+    list-style-type: none;
+}
+
+
+li:hover{
+    color: gray;
+    border-top: 1px solid gray;
+}
