@@ -9,12 +9,12 @@ const router = new express.Router();
 router.post("/api/git/init/:name", (req, res) => {
     try {
 
-        if (!fs.existsSync(`ubuntu@192.168.7.6:/home/ubuntu/Server/git/${req.params.name}.git`)){
+        if (!fs.existsSync(`../../../git/${req.params.name}.git`)){
 
-            const simpleGit = require('simple-git')(`../../testRepos/${req.params.name}`);
+            const simpleGit = require('simple-git')(`../../../git`);
 
             simpleGit.init("bare")
-                .addRemote("origin", `ubuntu@192.168.7.6:/home/ubuntu/Server/git/${req.params.name}.git`)
+                // .addRemote("origin", `ubuntu@192.168.7.6:/home/ubuntu/Server/git/${req.params.name}.git`)
 
 
                 res.send(`ubuntu@192.168.7.6:/home/ubuntu/Server/git/${req.params.name}.git`);
@@ -23,7 +23,7 @@ router.post("/api/git/init/:name", (req, res) => {
         }
 
     } catch (e) {
-        res.send(e);
+        res.send("did not work");
     }
 })
 
