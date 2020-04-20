@@ -2,12 +2,13 @@
 
 .item{
     margin-left: .5rem;
-    margin-top: .5rem;
+    margin-top: .25rem;
     color: white;
     font-family: $primary-font;
     border-top: 1px solid #0A1826;
     font-weight: 500;
     transition: .4s;
+    cursor: pointer;
 }
 .caret{
     cursor: pointer;
@@ -29,10 +30,6 @@
 .active {
     display: block;
 }
-ul{
-    list-style-type: none;
-}
-
 
 li:hover{
     color: gray;
