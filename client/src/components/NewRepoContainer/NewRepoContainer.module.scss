@@ -1,0 +1,28 @@
+@import "variables";
+
+.newRepoContainer{
+    margin: 1rem;
+    display: flex;
+    height: 4rem;
+}
+
+.newButton{
+    align-self: center;
+    margin: 1rem;
+}
+
+.repoUrl{
+    height: 2.5rem;
+    width: 16rem;
+    background-color: white;
+    align-self: center;
+    border-radius: 5px;
+    font-family: $primary-font;
+    font-weight: 600;
+}
+
+.repoInput{
+    margin-top: -2rem;
+    margin-right: 1rem;
+    align-self: center;
+}

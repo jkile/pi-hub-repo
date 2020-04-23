@@ -29,7 +29,7 @@ export default function LoginCard() {
                 <TextInput type="text" placeholder="Username" value={userName} onChange={e => setUserName(e.target.value)} />
                 <TextInput type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
                 <div className={styles.loginButton}>
-                    <Button onClick={handleLogin} />
+                    <Button onClick={handleLogin} text="Login"/>
                 </div>
             </form>
         </div>
