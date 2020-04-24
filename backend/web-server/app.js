@@ -24,11 +24,6 @@ app.get('', (req, res) => {
     res.send('index')
 })
 
-app.get('/home', (req, res) => {
-    console.log(req.body)
-    res.sendFile(path.join(__dirname, '../home.html'))
-})
-
 app.listen(port, () => {
     console.log(chalk.whiteBright.italic.bgBlue('Underwater-Server is now running on port ' + port))
 })
