@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
-    "squad": "nodemon web-server/app.js"
+    "squad": "node src/routers/hooks.js & nodemon web-server/app.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,7 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "chalk": "^3.0.0",
+    "chokidar": "^3.4.0",
     "cookie-parser": "^1.4.4",
     "directory-tree": "^2.2.4",
     "express": "^4.17.1",
