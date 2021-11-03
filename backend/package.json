@@ -36,7 +36,7 @@
     "simple-git": "^1.132.0",
     "tailwindcss": "^1.2.0",
     "tsscmp": "^1.0.6",
-    "validator": "^12.2.0"
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
